@@ -27,6 +27,7 @@ class Helper {
     std::vector<int> extract_int_from_string(std::string str);
     std::stack<std::string> extract_string_to_stack(const std::string str);
     std::stack<char> extract_char_to_stack(const std::string str, const char separator);
+    std::vector<int> convert_str_to_int_array(const std::string str);
 };
 // NO "Helper::" IN FRONT OF FUNCTIONS
 

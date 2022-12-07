@@ -4,6 +4,17 @@
 Helper m;
 int main()
 {
+    // read as array of strings
+    // read through lines
+    // read commands (ignore ls)
+    // sum all files in folder
+    // follow command to subfolder
+    // add to folder stack
+    // sum all files
+    // when go to parent, remove from stack and add child file size to parent
+    // HACK: douplicate folders - catch and add unique identifier
+    // end loop to go back to root and sum up all parent folder correctly
+    
     std::vector<std::string> array_str;
     std::map<std::string, int> folder_size;
     array_str = m.read_input_string("input.txt");
@@ -23,7 +34,6 @@ int main()
                 current_folder = c.erase(0, 5);
                 if (folder_size.count(current_folder))
                 {
-                    std::cout << "Something is fishy with " << current_folder << std::endl;
                     current_folder = current_folder + std::to_string(individualizer);
                     ++individualizer;
                 }

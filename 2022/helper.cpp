@@ -239,3 +239,13 @@ std::stack<char> Helper::extract_char_to_stack(const std::string str, const char
     }
     return chars;
 }
+
+std::vector<int> Helper::convert_str_to_int_array(const std::string str)
+{
+    std::vector<int> vector;
+    for (int i = 0; i < str.size(); ++i)
+    {
+        vector.emplace_back((int)str[i] - 48);
+    }
+    return vector;
+}
