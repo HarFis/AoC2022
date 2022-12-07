@@ -92,5 +92,6 @@ build/
 *.txt
 others.cpp
 tempCodeRunnerFile.cpp
+dayXX
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,c++
