@@ -24,7 +24,6 @@ int main()
     std::string current_folder;
     int individualizer{1};
     int count{};
-    std::cout << "array str: " << array_str.size() << std::endl;
     for (auto c : array_str)
     {
         if (c[0] == '$')
@@ -43,7 +42,6 @@ int main()
             else if (c[5] == '.')
             {
                 int subfolder_size = folder_size[directory_stack.top()];
-                std::cout << directory_stack.top() << ": " << subfolder_size << std::endl;
                 directory_stack.pop();
                 folder_size[directory_stack.top()] += subfolder_size;
                 count += 1;
@@ -51,22 +49,17 @@ int main()
         }
         else if (isdigit(c.at(0)))
         {
-            // std::cout << current_folder << std::endl;
             std::pair<std::string, std::string> file;
             file = m.string_to_pair_by_separator(c, ' ');
-            // std::cout << std::stoi(file.first) << " - " << file.second << std::endl;
             folder_size[current_folder] += std::stoi(file.first);
         }
     }
     std::cout << "before: " << folder_size[directory_stack.top()] << std::endl;
     while (directory_stack.size() > 1)
     {
-        std::cout << "stack size: " << directory_stack.size() << " " << directory_stack.top() << " bites: " << folder_size[directory_stack.top()] << std::endl;
         int subfolder_size = folder_size[directory_stack.top()];
         directory_stack.pop();
-        std::cout << folder_size[directory_stack.top()] << std::endl;
         folder_size[directory_stack.top()] += subfolder_size;
-        std::cout << folder_size[directory_stack.top()] << std::endl;
     }
     // Part 1
     int sum{};
@@ -81,10 +74,8 @@ int main()
     int wanted{min_space};
     for (auto &i : folder_size)
     {
-        //std::cout << i.first << " " << i.second << std::endl;
         if (i.second < 100000)
         {
-            // std::cout << i.first << " " << i.second << std::endl;
             sum += i.second;
         }
         if(i.second >= needed)

@@ -20,8 +20,10 @@ class Helper {
     std::vector<std::pair<int, int> > string_to_vector_pair(const std::string str);
     std::vector<int> string_to_int_array(const std::string str);
     std::pair<std::string, std::string> string_to_pair_by_separator(const std::string str, const char separator, const bool isSwapped);
+    std::pair<std::string, int> string_to_pair_str_int_by_separator(const std::string str, const char separator);
     std::pair<int,int> string_to_int_pair_by_separator(const std::string str, const char separator);
     std::vector<std::pair<std::string,std::string>> read_input_string_to_pair_with_separator(const std::string filename, const char separator);
+    std::vector<std::pair<std::string,int>> read_input_string_to_pair_str_int_with_separator(const std::string filename, const char separator);
     std::vector<std::pair<std::string,std::string>> read_input_string_to_pair_by_length(const std::string filename);
     std::pair<std::string, std::string> create_pair_by_half(const std::string str);
     std::vector<int> extract_int_from_string(std::string str);

@@ -18,11 +18,10 @@ std::vector<int> Helper::read_input_int(const std::string filename)
         {
             write_value = std::stoi(line);
         }
-        catch(const std::exception& e)
+        catch (const std::exception &e)
         {
             std::cerr << e.what() << '\n';
         }
-        
 
         array_.push_back(write_value);
     }
@@ -47,6 +46,17 @@ std::pair<std::string, std::string> Helper::string_to_pair_by_separator(const st
     return result;
 }
 
+std::pair<std::string, int> Helper::string_to_pair_str_int_by_separator(const std::string str, const char separator)
+{
+    std::string key, val;
+    std::stringstream ss(str);
+    std::getline(ss, key, separator);
+    std::getline(ss, val);
+    std::pair<std::string, int> result;
+    result = make_pair(key, std::stoi(val));
+    return result;
+}
+
 std::vector<std::string> Helper::read_input_string(const std::string filename)
 {
     std::vector<std::string> array_;
@@ -68,9 +78,9 @@ std::vector<std::string> Helper::read_input_string(const std::string filename)
     return array_;
 }
 
-std::vector<std::pair<std::string,std::string>> Helper::read_input_string_to_pair_with_separator(const std::string filename, const char separator)
+std::vector<std::pair<std::string, std::string>> Helper::read_input_string_to_pair_with_separator(const std::string filename, const char separator)
 {
-    std::vector<std::pair<std::string,std::string>> array_;
+    std::vector<std::pair<std::string, std::string>> array_;
     std::string line;
     std::ifstream input_file;
     input_file.open(filename);
@@ -80,8 +90,30 @@ std::vector<std::pair<std::string,std::string>> Helper::read_input_string_to_pai
     }
     while (getline(input_file, line))
     {
-        std::pair<std::string,std::string> pairs;
+        std::pair<std::string, std::string> pairs;
         pairs = string_to_pair_by_separator(line, separator);
+        array_.push_back(pairs);
+    }
+    if (input_file.is_open())
+    {
+        input_file.close();
+    }
+    return array_;
+}
+std::vector<std::pair<std::string, int>> Helper::read_input_string_to_pair_str_int_with_separator(const std::string filename, const char separator)
+{
+    std::vector<std::pair<std::string, int>> array_;
+    std::string line;
+    std::ifstream input_file;
+    input_file.open(filename);
+    if (!input_file.is_open())
+    {
+        std::cout << "ERROR opening file";
+    }
+    while (getline(input_file, line))
+    {
+        std::pair<std::string, int> pairs;
+        pairs = string_to_pair_str_int_by_separator(line, separator);
         array_.push_back(pairs);
     }
     if (input_file.is_open())
@@ -154,9 +186,9 @@ std::vector<int> Helper::string_to_int_array(const std::string str)
     return result;
 }
 
-std::vector<std::pair<std::string,std::string>> Helper::read_input_string_to_pair_by_length(const std::string filename)
+std::vector<std::pair<std::string, std::string>> Helper::read_input_string_to_pair_by_length(const std::string filename)
 {
-    std::vector<std::pair<std::string,std::string>> array_;
+    std::vector<std::pair<std::string, std::string>> array_;
     std::string line;
     std::ifstream input_file;
     input_file.open(filename);
@@ -166,7 +198,7 @@ std::vector<std::pair<std::string,std::string>> Helper::read_input_string_to_pai
     }
     while (getline(input_file, line))
     {
-        std::pair<std::string,std::string> pair;
+        std::pair<std::string, std::string> pair;
         pair = create_pair_by_half(line);
         array_.push_back(pair);
     }
@@ -179,20 +211,20 @@ std::vector<std::pair<std::string,std::string>> Helper::read_input_string_to_pai
 
 std::pair<std::string, std::string> Helper::create_pair_by_half(const std::string str)
 {
-std::pair<std::string,std::string> pair;
-    pair.first = str.substr(0, str.length()/2);
-    pair.second = str.substr(str.length()/2);
+    std::pair<std::string, std::string> pair;
+    pair.first = str.substr(0, str.length() / 2);
+    pair.second = str.substr(str.length() / 2);
     return pair;
 }
 
-std::pair<int,int> Helper::string_to_int_pair_by_separator(const std::string str, const char separator)
+std::pair<int, int> Helper::string_to_int_pair_by_separator(const std::string str, const char separator)
 {
     std::string key, val;
     std::stringstream ss(str);
     std::getline(ss, key, separator);
     std::getline(ss, val);
-    std::pair<int,int> result;
-    //std::cout << key << std::endl;
+    std::pair<int, int> result;
+    // std::cout << key << std::endl;
     result.first = std::stoi(key);
     result.second = std::stoi(val);
     return result;
