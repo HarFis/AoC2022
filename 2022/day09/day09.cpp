@@ -7,6 +7,13 @@ void print_pos(const std::pair<int, int> t, const std::pair<int, int> h);
 
 int main()
 {
+    /*
+    Read input as pair - director + steps
+    Store head and tail coordinates as pair in each
+    Check at every step if movement of tail necessary
+    Move tail if necessary according to the rules (sideways, up-/downwards or diagonal)
+    store position in set (avoid duplicate)    
+    */
     std::vector<std::pair<std::string, int>> array_str;
     std::vector<int> array_int;
     int tail_moves{};

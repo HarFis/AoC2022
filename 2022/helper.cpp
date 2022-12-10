@@ -281,3 +281,35 @@ std::vector<int> Helper::convert_str_to_int_array(const std::string str)
     }
     return vector;
 }
+
+std::vector<std::pair<std::string, int>> Helper::read_input_string_to_special_pair_str_int_with_separator(const std::string filename, const char separator)
+{
+    std::vector<std::pair<std::string, int>> array_;
+    std::string line;
+    std::ifstream input_file;
+    input_file.open(filename);
+    if (!input_file.is_open())
+    {
+        std::cout << "ERROR opening file";
+    }
+    while (getline(input_file, line))
+    {
+        std::pair<std::string, int> pairs;
+        if (line.length() > 4)
+        {
+            pairs = string_to_pair_str_int_by_separator(line, separator);
+        }
+        else
+        {
+            pairs.first = "noop";
+            pairs.second = 0;
+        }
+
+        array_.push_back(pairs);
+    }
+    if (input_file.is_open())
+    {
+        input_file.close();
+    }
+    return array_;
+}

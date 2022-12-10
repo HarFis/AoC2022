@@ -7,6 +7,14 @@ void print_pos(const std::pair<int, int> t, const std::pair<int, int> h);
 
 int main()
 {
+        /*
+    Read input as pair - director + steps
+    Store head and tails (in a vector) coordinates as pair in each
+    Define new steps of tails (diagnoal)
+    Check at every step if movement of tail (recurssive of all tails) necessary
+    Move tail(s) if necessary
+    store position of last tail in set (avoid duplicate)    
+    */
     std::vector<std::pair<std::string, int>> array_str;
     std::vector<int> array_int;
     array_str = h.read_input_string_to_pair_str_int_with_separator("input.txt", ' ');
